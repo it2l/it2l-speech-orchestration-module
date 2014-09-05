@@ -1,6 +1,6 @@
 package com.italk2learn.vo;
 
-import com.italk2learn.vo.ResponseVO;
+import java.util.List;
 
 
 public class SpeechRecognitionResponseVO extends ResponseVO {
@@ -14,7 +14,7 @@ public class SpeechRecognitionResponseVO extends ResponseVO {
 	
 	private boolean isOpen;
 	
-	private String liveResponse;
+	private List<String> liveResponse;
 
 	public boolean isOpen() {
 		return isOpen;
@@ -24,11 +24,11 @@ public class SpeechRecognitionResponseVO extends ResponseVO {
 		this.isOpen = isOpen;
 	}
 
-	public String getLiveResponse() {
+	public List<String> getLiveResponse() {
 		return liveResponse;
 	}
 
-	public void setLiveResponse(String liveResponse) {
+	public void setLiveResponse(List<String> liveResponse) {
 		this.liveResponse = liveResponse;
 	}
 

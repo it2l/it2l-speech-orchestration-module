@@ -10,6 +10,8 @@ public class SpeechRecognitionRequestVO extends RequestVO {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private int instance;
+	
 	private byte[] data;
 
 	public byte[] getData() {
@@ -18,6 +20,14 @@ public class SpeechRecognitionRequestVO extends RequestVO {
 
 	public void setData(byte[] data) {
 		this.data = data;
+	}
+
+	public int getInstance() {
+		return instance;
+	}
+
+	public void setInstanceNum(int instanceNum) {
+		this.instance = instanceNum;
 	}
 
 }
