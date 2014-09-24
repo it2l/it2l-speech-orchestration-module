@@ -18,13 +18,13 @@
 			<type>jar</type>
 			<scope>compile</scope>
 	</dependency>
-	<dependency>
-			<groupId>com.platform.main</groupId>
-			<artifactId>libiT2L</artifactId>
-			<version>1.0</version>
-			<scope>runtime</scope>
-			<type>so</type>
-	</dependency>
+<!-- 	<dependency> -->
+<!-- 			<groupId>com.platform.main</groupId> -->
+<!-- 			<artifactId>libiT2L</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 			<scope>runtime</scope> -->
+<!-- 			<type>so</type> -->
+<!-- 	</dependency> -->
   </dependencies>
   <distributionManagement>
 		<repository>

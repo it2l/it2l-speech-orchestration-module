@@ -1,7 +1,6 @@
 package com.italk2learn.bo;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -26,9 +25,7 @@ public class SpeechRecognitionBO implements ISpeechRecognitionBO {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	private EnginesMap em= new EnginesMap();
-	private String url="";
-	private Integer instanceNum;
+	private EnginesMap em= EnginesMap.getInstance();
 
 
 	/*
@@ -41,14 +38,14 @@ public class SpeechRecognitionBO implements ISpeechRecognitionBO {
 			Map<String, String> vars = new HashMap<String, String>();
 			//Get an available instance
 			ASRInstanceVO aux= em.getInstanceEngineAvailable(request.getHeaderVO().getLoginUser());
-			instanceNum=aux.getInstance();
-			url=aux.getUrl();
+			System.out.println("Speech module available for user: "+request.getHeaderVO().getLoginUser()+" with instance: "+aux.getInstance().toString() );
 			vars.put("user", request.getHeaderVO().getLoginUser());
 			vars.put("instance", aux.getInstance().toString());
 			//Call initEngineService of an available instance
 			this.restTemplate.getForObject(aux.getUrl() + "/initEngine?user={user}&instance={instance}",String.class, vars);
 			return res;
 		} catch (Exception e) {
+			em.releaseEngineInstance(request.getHeaderVO().getLoginUser());
 			logger.error(e.toString());
 		}
 		return res;	
@@ -59,13 +56,17 @@ public class SpeechRecognitionBO implements ISpeechRecognitionBO {
 	 */
 	public SpeechRecognitionResponseVO closeASREngine(SpeechRecognitionRequestVO request) throws ITalk2LearnException{
 		logger.debug("closeASREngine()--- Closing ASREngine");
+		String url=em.getUrlByUser(request.getHeaderVO().getLoginUser());
+		Integer instanceNum=em.getInstanceByUser(request.getHeaderVO().getLoginUser());
 		em.releaseEngineInstance(request.getHeaderVO().getLoginUser());
 		SpeechRecognitionResponseVO res=new SpeechRecognitionResponseVO();
 		request.setInstanceNum(instanceNum);
 		try {
-			String response=this.restTemplate.getForObject(url + "/closeEngine?instance={instance}",String.class, instanceNum.toString());
-			res.setResponse(response);
-			url="";
+			if (instanceNum!=null) {
+				System.out.println("Speech module released by user: "+request.getHeaderVO().getLoginUser()+" with instance: "+instanceNum.toString());
+				String response=this.restTemplate.getForObject(url + "/closeEngine?instance={instance}",String.class, instanceNum.toString());
+				res.setResponse(response);
+			}
 			return res;
 		} catch (Exception e) {
 			logger.error(e.toString());
@@ -79,10 +80,11 @@ public class SpeechRecognitionBO implements ISpeechRecognitionBO {
 	public SpeechRecognitionResponseVO sendNewAudioChunk(SpeechRecognitionRequestVO request) throws ITalk2LearnException{
 		logger.debug("sendNewAudioChunk()--- Sending new audio chunk");
 		SpeechRecognitionResponseVO res=new SpeechRecognitionResponseVO();
-		request.setInstanceNum(instanceNum);
+		request.setInstanceNum(em.getInstanceByUser(request.getHeaderVO().getLoginUser()));
 		try {
-			return this.restTemplate.postForObject(url+"/sendData", request.getData(), SpeechRecognitionResponseVO.class);
+			return this.restTemplate.postForObject(em.getUrlByUser(request.getHeaderVO().getLoginUser())+"/sendData", request, SpeechRecognitionResponseVO.class);
 		} catch (Exception e) {
+			em.releaseEngineInstance(request.getHeaderVO().getLoginUser());
 			logger.error(e.toString());
 		}
 		return res;
