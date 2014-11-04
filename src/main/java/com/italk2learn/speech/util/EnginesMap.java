@@ -8,6 +8,12 @@ public class EnginesMap {
 	
 	private static EnginesMap instance = null;
 	
+	private static final String LANGUAGE = "en_ux";
+	private static final String SERVER = "localhost";
+	private static final String MODEL = "base";
+	private static final String SERVER_PART1 = "http://193.61.29.166:";
+	private static final String SERVER_PART2 = "/italk2learnsm/speechRecognition";
+	
 	//JLF: Key=ServerID, Value=AsrInstanceVO 
 	private HashMap<Integer, ASRInstanceVO> engines;
 	
@@ -19,132 +25,132 @@ public class EnginesMap {
 		server1.setAvailability(true);
 		server1.setInstance(1);
 		server1.setId(1);
-		server1.setLanguageCode("en_ux");
-		server1.setServer("localhost");
-		server1.setModel("ittl1");
+		server1.setLanguageCode(LANGUAGE);
+		server1.setServer(SERVER);
+		server1.setModel(MODEL);
 		server1.setUser("");
-		server1.setUrl("http://localhost:8081/italk2learnsm/speechRecognition");
+		server1.setUrl(SERVER_PART1+"8081"+SERVER_PART2);
 		
 		//Instance2
 		ASRInstanceVO server2= new ASRInstanceVO();
 		server2.setAvailability(true);
 		server2.setInstance(2);
 		server2.setId(2);
-		server2.setLanguageCode("en_ux");
-		server2.setServer("localhost");
-		server2.setModel("ittl1");
+		server2.setLanguageCode(LANGUAGE);
+		server2.setServer(SERVER);
+		server2.setModel(MODEL);
 		server2.setUser("");
-		server2.setUrl("http://localhost:8082/italk2learnsm/speechRecognition");
+		server2.setUrl(SERVER_PART1+"8082"+SERVER_PART2);
 		
 		//Instance3
 		ASRInstanceVO server3= new ASRInstanceVO();
 		server3.setAvailability(true);
 		server3.setInstance(3);
 		server3.setId(3);
-		server3.setLanguageCode("en_ux");
-		server3.setServer("localhost");
-		server3.setModel("ittl1");
+		server3.setLanguageCode(LANGUAGE);
+		server3.setServer(SERVER);
+		server3.setModel(MODEL);
 		server3.setUser("");
-		server3.setUrl("http://localhost:8083/italk2learnsm/speechRecognition");
+		server3.setUrl(SERVER_PART1+"8083"+SERVER_PART2);
 		
 		//Instance4
 		ASRInstanceVO server4= new ASRInstanceVO();
 		server4.setAvailability(true);
 		server4.setInstance(4);
 		server4.setId(4);
-		server4.setLanguageCode("en_ux");
-		server4.setServer("localhost");
-		server4.setModel("ittl1");
+		server4.setLanguageCode(LANGUAGE);
+		server4.setServer(SERVER);
+		server4.setModel(MODEL);
 		server4.setUser("");
-		server4.setUrl("http://localhost:8084/italk2learnsm/speechRecognition");
+		server4.setUrl(SERVER_PART1+"8084"+SERVER_PART2);
 		
 		//Instance5
 		ASRInstanceVO server5= new ASRInstanceVO();
 		server5.setAvailability(true);
 		server5.setInstance(5);
 		server5.setId(5);
-		server5.setLanguageCode("en_ux");
-		server5.setServer("localhost");
-		server5.setModel("ittl1");
+		server5.setLanguageCode(LANGUAGE);
+		server5.setServer(SERVER);
+		server5.setModel(MODEL);
 		server5.setUser("");
-		server5.setUrl("http://localhost:8085/italk2learnsm/speechRecognition");
+		server5.setUrl(SERVER_PART1+"8085"+SERVER_PART2);
 		
 		//Instance6
 		ASRInstanceVO server6= new ASRInstanceVO();
 		server6.setAvailability(true);
 		server6.setInstance(6);
 		server6.setId(6);
-		server6.setLanguageCode("en_ux");
-		server6.setServer("localhost");
-		server6.setModel("ittl1");
+		server6.setLanguageCode(LANGUAGE);
+		server6.setServer(SERVER);
+		server6.setModel(MODEL);
 		server6.setUser("");
-		server6.setUrl("http://localhost:8086/italk2learnsm/speechRecognition");
+		server6.setUrl(SERVER_PART1+"8086"+SERVER_PART2);
 		
 		//Instance7
 		ASRInstanceVO server7= new ASRInstanceVO();
 		server7.setAvailability(true);
 		server7.setInstance(7);
 		server7.setId(7);
-		server7.setLanguageCode("en_ux");
-		server7.setServer("localhost");
-		server7.setModel("ittl1");
+		server7.setLanguageCode(LANGUAGE);
+		server7.setServer(SERVER);
+		server7.setModel(MODEL);
 		server7.setUser("");
-		server7.setUrl("http://localhost:8087/italk2learnsm/speechRecognition");
+		server7.setUrl(SERVER_PART1+"8087"+SERVER_PART2);
 
 		//Instance8
 		ASRInstanceVO server8= new ASRInstanceVO();
 		server8.setAvailability(true);
 		server8.setInstance(8);
 		server8.setId(8);
-		server8.setLanguageCode("en_ux");
-		server8.setServer("localhost");
-		server8.setModel("ittl1");
+		server8.setLanguageCode(LANGUAGE);
+		server8.setServer(SERVER);
+		server8.setModel(MODEL);
 		server8.setUser("");
-		server8.setUrl("http://localhost:8088/italk2learnsm/speechRecognition");
+		server8.setUrl(SERVER_PART1+"8088"+SERVER_PART2);
 		
 		//Instance9
 		ASRInstanceVO server9= new ASRInstanceVO();
 		server9.setAvailability(true);
 		server9.setInstance(9);
 		server9.setId(9);
-		server9.setLanguageCode("en_ux");
-		server9.setServer("localhost");
-		server9.setModel("ittl1");
+		server9.setLanguageCode(LANGUAGE);
+		server9.setServer(SERVER);
+		server9.setModel(MODEL);
 		server9.setUser("");
-		server9.setUrl("http://localhost:8089/italk2learnsm/speechRecognition");
+		server9.setUrl(SERVER_PART1+"8089"+SERVER_PART2);
 
 		//Instance10
 		ASRInstanceVO server10= new ASRInstanceVO();
 		server10.setAvailability(true);
 		server10.setInstance(10);
 		server10.setId(10);
-		server10.setLanguageCode("en_ux");
-		server10.setServer("localhost");
-		server10.setModel("ittl1");
+		server10.setLanguageCode(LANGUAGE);
+		server10.setServer(SERVER);
+		server10.setModel(MODEL);
 		server10.setUser("");
-		server10.setUrl("http://localhost:8090/italk2learnsm/speechRecognition");
+		server10.setUrl(SERVER_PART1+"8090"+SERVER_PART2);
 
 		//Instance11
 		ASRInstanceVO server11= new ASRInstanceVO();
 		server11.setAvailability(true);
 		server11.setInstance(11);
 		server11.setId(11);
-		server11.setLanguageCode("en_ux");
-		server11.setServer("localhost");
-		server11.setModel("ittl1");
+		server11.setLanguageCode(LANGUAGE);
+		server11.setServer(SERVER);
+		server11.setModel(MODEL);
 		server11.setUser("");
-		server11.setUrl("http://localhost:8091/italk2learnsm/speechRecognition");
+		server11.setUrl(SERVER_PART1+"8091"+SERVER_PART2);
 		
 		//Instance12
 		ASRInstanceVO server12= new ASRInstanceVO();
 		server12.setAvailability(true);
 		server12.setInstance(12);
 		server12.setId(12);
-		server12.setLanguageCode("en_ux");
-		server12.setServer("localhost");
-		server12.setModel("ittl1");
+		server12.setLanguageCode(LANGUAGE);
+		server12.setServer(SERVER);
+		server12.setModel(MODEL);
 		server12.setUser("");
-		server12.setUrl("http://localhost:8092/italk2learnsm/speechRecognition");
+		server12.setUrl(SERVER_PART1+"8092"+SERVER_PART2);
 		
 		//Storing instances
 		engines.put(1,server1);
