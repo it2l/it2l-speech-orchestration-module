@@ -69,17 +69,20 @@ public class SpeechRecognitionBO implements ISpeechRecognitionBO {
 	 */
 	public SpeechRecognitionResponseVO closeASREngine(SpeechRecognitionRequestVO request) throws ITalk2LearnException{
 		logger.debug("closeASREngine()--- Closing ASREngine");
+		SpeechRecognitionResponseVO res=new SpeechRecognitionResponseVO();
 		String url=em.getUrlByUser(request.getHeaderVO().getLoginUser());
 		Integer instanceNum=em.getInstanceByUser(request.getHeaderVO().getLoginUser());
+		if (instanceNum==null){
+			System.out.println("Instance already released by this user or never used");
+			logger.info("closeASREngine()--- Instance already released by this user or never used");
+			return res;
+		}
 		em.releaseEngineInstance(request.getHeaderVO().getLoginUser());
-		SpeechRecognitionResponseVO res=new SpeechRecognitionResponseVO();
 		request.setInstance(instanceNum);
 		try {
-			if (instanceNum!=null) {
-				System.out.println("Speech module released by user: "+request.getHeaderVO().getLoginUser()+" with instance: "+instanceNum.toString());
-				String response=this.restTemplate.getForObject(url + "/closeEngine?instance={instance}",String.class, instanceNum.toString());
-				res.setResponse(response);
-			}
+			System.out.println("Speech module released by user: "+request.getHeaderVO().getLoginUser()+" with instance: "+instanceNum.toString());
+			String response=this.restTemplate.getForObject(url + "/closeEngine?instance={instance}",String.class, instanceNum.toString());
+			res.setResponse(response);
 			return res;
 		} catch (Exception e) {
 			logger.error(e.toString());
